@@ -16,3 +16,5 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!-- https://github.com/evanemran/QuickMeal/blob/master/app/src/main/res/layout/activity_main.xml-->
