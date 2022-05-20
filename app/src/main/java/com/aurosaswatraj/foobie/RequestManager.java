@@ -23,6 +23,9 @@ public class RequestManager {
 
     private interface callRandomRecipies{
 //        Create a model class for API Response
+//        Switch to model package and create classes..!
+//   Use this to convert JSON data to Model classes:https://freecodegenerators.com/code-converters/json-to-pojo
+
     }
 
 
