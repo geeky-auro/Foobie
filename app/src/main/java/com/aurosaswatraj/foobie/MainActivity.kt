@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.aurosaswatraj.foobie.Adapters.RandomRecipeAdapter
 import com.aurosaswatraj.foobie.Listeners.RandomRecipeResponseListener
 import com.aurosaswatraj.foobie.Models.RandomRecipeApiResponse
@@ -18,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     var manager:RequestManager?=null
     var randomRecipeAdapter:RandomRecipeAdapter?=null
 
-
+    var progress:ProgressDialog? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +26,10 @@ class MainActivity : AppCompatActivity() {
         manager!!.getRandomRecipes(randomRecipeResponseListener)
 
 
+        progress=ProgressDialog(this)
+        progress?.setMessage("Loading ");
+        progress?.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progress?.isIndeterminate = true;
 
     }
 
