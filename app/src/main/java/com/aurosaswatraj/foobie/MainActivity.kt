@@ -2,6 +2,7 @@ package com.aurosaswatraj.foobie
 
 import android.app.ProgressDialog
 import android.os.Bundle
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     var randomRecipeAdapter:RandomRecipeAdapter?=null
 
     var progress:ProgressDialog? = null
-
+    var spinner:Spinner?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,10 +27,9 @@ class MainActivity : AppCompatActivity() {
         manager!!.getRandomRecipes(randomRecipeResponseListener)
 
 
+
         progress= ProgressDialog(this)
-        progress?.setMessage("Loading ");
-        progress?.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progress?.isIndeterminate = true;
+        progress?.setTitle("Loading ");
         progress?.show()
 
     }
