@@ -26,16 +26,17 @@ class MainActivity : AppCompatActivity() {
         manager!!.getRandomRecipes(randomRecipeResponseListener)
 
 
-        progress=ProgressDialog(this)
+        progress= ProgressDialog(this)
         progress?.setMessage("Loading ");
         progress?.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progress?.isIndeterminate = true;
+        progress?.show()
 
     }
 
     private val randomRecipeResponseListener: RandomRecipeResponseListener = object : RandomRecipeResponseListener {
         override fun didfetch(response: RandomRecipeApiResponse?, message: String?) {
-
+            progress?.dismiss()
             recycler_random.setHasFixedSize(true)
             recycler_random.layoutManager=GridLayoutManager(this@MainActivity,1)
             randomRecipeAdapter=RandomRecipeAdapter(this@MainActivity,response?.recipes)
