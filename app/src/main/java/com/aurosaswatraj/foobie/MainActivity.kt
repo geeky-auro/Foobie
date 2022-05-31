@@ -1,6 +1,7 @@
 package com.aurosaswatraj.foobie
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -93,7 +94,10 @@ class MainActivity : AppCompatActivity() {
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
         }
 
-    private val recipeClickListener:RecipeClickListener= RecipeClickListener {
-
-    }
+//    When a single item is clicked...!
+    private val recipeClickListener:RecipeClickListener= RecipeClickListener {id->
+    intent = Intent(applicationContext, RecipeDetailsActivity::class.java)
+    intent.putExtra("id",id)
+    startActivity(intent)
+}
 }
