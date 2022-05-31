@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.aurosaswatraj.foobie.Adapters.RandomRecipeAdapter
 import com.aurosaswatraj.foobie.Listeners.RandomRecipeResponseListener
+import com.aurosaswatraj.foobie.Listeners.RecipeClickListener
 import com.aurosaswatraj.foobie.Models.RandomRecipeApiResponse
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity() {
             progress?.dismiss()
             recycler_random.setHasFixedSize(true)
             recycler_random.layoutManager=StaggeredGridLayoutManager(1,LinearLayoutManager.VERTICAL)
-            randomRecipeAdapter=RandomRecipeAdapter(this@MainActivity,response?.recipes)
+            randomRecipeAdapter=RandomRecipeAdapter(this@MainActivity,response?.recipes,recipeClickListener)
             recycler_random.adapter=randomRecipeAdapter
             recycler_random.setVisibility(View.VISIBLE)
         }
@@ -91,4 +92,8 @@ class MainActivity : AppCompatActivity() {
 
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
         }
+
+    private val recipeClickListener:RecipeClickListener= RecipeClickListener {
+
+    }
 }

@@ -49,6 +49,13 @@ public class RandomRecipeAdapter extends RecyclerView.Adapter<RandomRecipeViewHo
         holder.textView_time.setText(list.get(position).readyInMinutes+" Minutes");
         Picasso.get().load(list.get(position).image).into(holder.imageView_food);
 
+        holder.random_list_container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onRecipeClicked(String.valueOf(list.get(holder.getAdapterPosition()).id));
+            }
+        });
+
     }
 
 
