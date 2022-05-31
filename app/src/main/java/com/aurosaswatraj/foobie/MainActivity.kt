@@ -7,6 +7,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.aurosaswatraj.foobie.Adapters.RandomRecipeAdapter
@@ -41,6 +42,20 @@ class MainActivity : AppCompatActivity() {
         arrayAdapter.setDropDownViewResource(R.layout.spinner_inner_text)
         spinner_tags.adapter=arrayAdapter
         spinner_tags.onItemSelectedListener=spinnerSelectedListener
+
+        searchView_home.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+               tags.clear()
+                tags.add(query)
+                manager!!.getRandomRecipes(randomRecipeResponseListener,tags)
+                progress?.show()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                return false
+            }
+        })
 
         progress= ProgressDialog(this)
         progress?.setTitle("Loading ");
