@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aurosaswatraj.foobie.Listeners.RecipeClickListener;
 import com.aurosaswatraj.foobie.Models.Recipe;
 import com.aurosaswatraj.foobie.R;
 import com.squareup.picasso.Picasso;
@@ -20,10 +21,12 @@ import java.util.List;
 public class RandomRecipeAdapter extends RecyclerView.Adapter<RandomRecipeViewHolder> {
     Context context;
     List<Recipe> list;
+    RecipeClickListener listener;
 
-    public RandomRecipeAdapter(Context context,List<Recipe> list){
+    public RandomRecipeAdapter(Context context,List<Recipe> list,RecipeClickListener listener){
         this.context=context;
         this.list=list;
+        this.listener=listener;
 
 
     }
