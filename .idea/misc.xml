@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Projects/Foobie/app/src/main/res/drawable/ic_cost.xml" value="0.1" />
         <entry key="..\:/Android Projects/Foobie/app/src/main/res/drawable/ic_heart.xml" value="0.2455" />
         <entry key="..\:/Android Projects/Foobie/app/src/main/res/drawable/ic_search.xml" value="0.2455" />
         <entry key="..\:/Android Projects/Foobie/app/src/main/res/drawable/ic_time.xml" value="0.2455" />
         <entry key="..\:/Android Projects/Foobie/app/src/main/res/layout/activity_main.xml" value="0.28940217391304346" />
+        <entry key="..\:/Android Projects/Foobie/app/src/main/res/layout/activity_recipe_details.xml" value="0.1" />
+        <entry key="..\:/Android Projects/Foobie/app/src/main/res/layout/ic_cost.xml" value="0.1" />
+        <entry key="..\:/Android Projects/Foobie/app/src/main/res/layout/list_meal_ingredients.xml" value="0.1" />
         <entry key="..\:/Android Projects/Foobie/app/src/main/res/layout/list_random_recipe.xml" value="0.3333333333333333" />
         <entry key="..\:/Android Projects/Foobie/app/src/main/res/layout/spinner_inner_text.xml" value="0.25407608695652173" />
         <entry key="..\:/Android Projects/Foobie/app/src/main/res/layout/spinner_text.xml" value="0.2617753623188406" />

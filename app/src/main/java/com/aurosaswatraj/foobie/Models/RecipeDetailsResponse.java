@@ -2,7 +2,7 @@ package com.aurosaswatraj.foobie.Models;
 
 import java.util.ArrayList;
 
-public class RecipeDetailsResponse {
+public abstract class RecipeDetailsResponse {
     public int id;
     public String title;
     public String image;
@@ -40,4 +40,8 @@ public class RecipeDetailsResponse {
     public ArrayList<ExtendedIngredient> extendedIngredients;
     public String summary;
     public WinePairing winePairing;
+
+    public abstract void didFetch(RecipeDetailsResponse response, String message);
+
+    public abstract void didError(String message);
 }
