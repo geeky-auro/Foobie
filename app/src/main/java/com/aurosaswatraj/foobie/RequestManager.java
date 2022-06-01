@@ -3,7 +3,9 @@ package com.aurosaswatraj.foobie;
 import android.content.Context;
 
 import com.aurosaswatraj.foobie.Listeners.RandomRecipeResponseListener;
+import com.aurosaswatraj.foobie.Listeners.RecipeDetailsListener;
 import com.aurosaswatraj.foobie.Models.RandomRecipeApiResponse;
+import com.aurosaswatraj.foobie.Models.RecipeDetailsResponse;
 
 import java.util.List;
 
@@ -13,6 +15,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public class RequestManager {
@@ -54,6 +57,7 @@ public class RequestManager {
 
 //        Synchronously send the request and return its response
         @GET("recipes/random")
+//        This is a method
         Call<RandomRecipeApiResponse> callRandomRecipe(
                 @Query("apiKey") String apiKey,
                 @Query("number") String Number,
@@ -73,7 +77,12 @@ public class RequestManager {
 
     private interface CallRecipeDetails{
         @GET("recipes/{id}/information")
-        Call<>
+        Call<RecipeDetailsResponse> callRecipeDetails(
+                @Path("id") int id,
+                @Query("apiKey") String apiKey
+        );
+
+        //        Now Create a method to access this interface..!
 
 //        Refer the Spoonacular API Documentation and Copy the example response...!
 //        Convert the response to java code using https://json2csharp.com/code-converters/json-to-pojo
@@ -136,6 +145,28 @@ public class RequestManager {
             }
         });
 //        Call this Method From MainActivity to get all data..!
+    }
+
+//    Pass listener as the parameter .. Create a listener inside the Listener Package
+    public  void getRecipeDetails(RecipeDetailsListener listener, int id){
+
+//        Call the CallRecipeInterface
+        CallRecipeDetails callRecipeDetails=retrofit.create(CallRecipeDetails.class);
+        Call<RecipeDetailsResponse> call= callRecipeDetails.callRecipeDetails(id,context.getString(R.string.api_key));
+        call.enqueue(new Callback<RecipeDetailsResponse>() {
+            @Override
+            public void onResponse(Call<RecipeDetailsResponse> call, Response<RecipeDetailsResponse> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<RecipeDetailsResponse> call, Throwable t) {
+
+            }
+        });
+
+
+
     }
 
 
