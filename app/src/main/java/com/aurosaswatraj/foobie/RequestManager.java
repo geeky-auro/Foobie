@@ -71,6 +71,16 @@ public class RequestManager {
     }
 
 
+    private interface CallRecipeDetails{
+        @GET("recipes/{id}/information")
+        Call<>
+
+//        Refer the Spoonacular API Documentation and Copy the example response...!
+//        Convert the response to java code using https://json2csharp.com/code-converters/json-to-pojo
+    }
+
+
+
     public void getRandomRecipes(RandomRecipeResponseListener listener,List<String> tags){
 //        https://square.github.io/retrofit/
         CallRandomRecipies callRandomRecipies=retrofit.create(CallRandomRecipies.class);
