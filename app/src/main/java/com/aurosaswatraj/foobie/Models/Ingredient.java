@@ -5,4 +5,20 @@ public class Ingredient {
     public String name;
     public String localizedName;
     public String image;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLocalizedName() {
+        return localizedName;
+    }
+
+    public String getImage() {
+        return image;
+    }
 }
