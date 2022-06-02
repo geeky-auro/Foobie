@@ -13,6 +13,10 @@
         <TextView
             android:id="@+id/textView_ingred_quantity"
             android:text="1 tbsp"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"
@@ -28,6 +32,10 @@
         <TextView
             android:id="@+id/textView_ingred_name"
             android:text="Olive Oil"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="18sp"

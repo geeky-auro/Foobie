@@ -1,19 +1,23 @@
 package com.aurosaswatraj.foobie;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aurosaswatraj.foobie.Adapters.IngredientsAdapter;
 import com.aurosaswatraj.foobie.Listeners.RecipeDetailsListener;
 import com.aurosaswatraj.foobie.Models.RecipeDetailsResponse;
 import com.squareup.picasso.Picasso;
 
 public class RecipeDetailsActivity extends AppCompatActivity {
+
 
     int id;
     TextView textView_meal_name,textView_meal_source,textView_meal_summary;
@@ -21,6 +25,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     RecyclerView recycler_meal_ingredients;
     RequestManager manager;
     ProgressDialog dialog;
+    IngredientsAdapter ingredientsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +38,10 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 //        Fetch theintent data from the mainActivity
         id=Integer.parseInt(getIntent().getStringExtra("id"));
         manager=new RequestManager(this);
-        manager.getRecipeDetails(recipeDetailsResponse,id);
+        manager.getRecipeDetails(recipeDetailsListener,id);
         dialog=new ProgressDialog(this);
         dialog.setTitle("Loading Details..!");
-        dialog.show();
+//        dialog.show();
 
 
     }
@@ -50,7 +55,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
     }
 
-    private final RecipeDetailsResponse recipeDetailsResponse = new RecipeDetailsResponse() {
+    private final RecipeDetailsListener recipeDetailsListener = new RecipeDetailsListener() {
         @Override
         public void didFetch(RecipeDetailsResponse response, String message) {
             dialog.dismiss();
@@ -60,8 +65,13 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             Picasso.get().load(response.image).into(imageView_meal_image);
 
 //            Show Recycler View ingredients..!
+            recycler_meal_ingredients.setHasFixedSize(true);
+            recycler_meal_ingredients.setLayoutManager(new LinearLayoutManager(RecipeDetailsActivity.this,LinearLayoutManager.HORIZONTAL,false));
+            ingredientsAdapter=new IngredientsAdapter(RecipeDetailsActivity.this,response.extendedIngredients);
 
-            showData(response);
+            recycler_meal_ingredients.setAdapter(ingredientsAdapter);
+
+
         }
 
         @Override
