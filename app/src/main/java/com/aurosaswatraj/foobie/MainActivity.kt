@@ -12,6 +12,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.aurosaswatraj.foobie.Adapters.RandomRecipeAdapter
+import com.aurosaswatraj.foobie.Listeners.CustomOnClickListener
 import com.aurosaswatraj.foobie.Listeners.RandomRecipeResponseListener
 import com.aurosaswatraj.foobie.Listeners.RecipeClickListener
 import com.aurosaswatraj.foobie.Models.RandomRecipeApiResponse
@@ -76,7 +77,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun error(Message: String?) {
-           Toast.makeText(this@MainActivity,"$Message",Toast.LENGTH_SHORT).show()
+            recycler_random.setVisibility(View.VISIBLE)
+            Toast.makeText(this@MainActivity, Message, Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -100,4 +102,13 @@ class MainActivity : AppCompatActivity() {
     intent.putExtra("id",id)
     startActivity(intent)
 }
+
+    private val customOnClickListener: CustomOnClickListener = object : CustomOnClickListener {
+        override fun onClick(text: String?) {
+            startActivity(
+                Intent(this@MainActivity, RecipeDetailsActivity::class.java)
+                    .putExtra("id", text)
+            )
+        }
+    }
 }
